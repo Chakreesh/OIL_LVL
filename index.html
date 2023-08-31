@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase.js"></script>
+<script>
+var firebaseConfig = {
+
+  apiKey: "03cdaa4a18feb6f04c6fab7c3a0b69ffec9eb81a",
+  authDomain: "https://accounts.google.com/o/oauth2/auth",
+  databaseURL: "https://sensor-51705-default-rtdb.firebaseio.com/"
+
+};
+
+firebase.initializeApp(firebaseConfig);
+
+var database = firebase.database();
+
+var ref = database.ref("/");
+
+ref.on("value", function(snapshot) {
+  var data = snapshot.val();
+
+  // Display the data in JSON format
+  document.getElementById("data").innerHTML = JSON.stringify(data);
+});
+</script>
+</head>
+<body>
+<div id="data"></div>
+</body>
+</html>
